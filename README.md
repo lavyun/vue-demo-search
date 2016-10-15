@@ -16,4 +16,4 @@
 > 5. 输入命令npm run dev
 
 * [演示地址](http://cs003.m2828.com/demo/360Search)
-* [vue.js 2.0中文文档](http://http://vuefe.cn/)
+* [vue.js 2.0中文文档](http://vuefe.cn/)
