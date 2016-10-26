@@ -13,7 +13,7 @@
 > 2. 安装nodejs
 > 3. 配置node环境变量(百度一下)
 > 4. 命令行进入本案例目录
-> 5. 输入命令npm run install(最好使用cnpm淘宝镜像)
+> 5. 输入命令npm install(最好使用cnpm淘宝镜像)
 > 6. 输入命令npm run dev
 
 * [演示地址](http://cs003.m2828.com/demo/360Search)
