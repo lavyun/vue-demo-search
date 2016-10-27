@@ -6,7 +6,13 @@
         <logo-select  @getindex='getIndex'></logo-select>
         <div class="search-input">
             <!-- $event是实参，表示event对象 -->
+            <!--
+            输入搜索内容即时搜索，所以有一个keyup事件。
+            按回车键有一个进入搜索内容页面，所以有一个keydown.enter事件
+            按上下键可以选择列表条目
+            -->
             <input type="text" v-model="keyword" @keyup="get($event)" @keydown.enter="search()" @keydown.down="selectDown()" @keydown.up.prevent="selectUp()">
+            <!-- 这是一个小叉叉，点击它可清除输入框内容 -->
             <span class="search-reset" @click="clearInput()">&times;</span>
             <button class="search-btn" @click="search()">搜一下</button>
             <div class="search-select">
@@ -32,8 +38,8 @@ export default {
     },
     data: function() {
         return {
-            myData: [],
-            keyword: '',
+            myData: [],//用来接收ajax得到的数据
+            keyword: '',//v-model绑定的输入框的value
             now: -1,
             searchIndex: 0,
             logoData: [{
@@ -51,9 +57,11 @@ export default {
     methods: {
         // &event是实参，表示event对象
         get: function(ev) {
+            // 如果按得键是上或者下，就不进行ajax
             if (ev.keyCode == 38 || ev.keyCode == 40) {
                 return;
             }
+
             this.$http.jsonp('https://sug.so.360.cn/suggest?word=' + this.keyword + '&encodein=utf-8&encodeout=utf-8').then(function(res) {
                 //                        console.log(res.data.s);
                 this.myData = res.data.s;
@@ -64,6 +72,7 @@ export default {
         },
         selectDown: function() {
             this.now++;
+            //到达最后一个时，再按下就回到第一个
             if (this.now == this.myData.length) {
                 this.now = 0;
             }
@@ -71,12 +80,14 @@ export default {
         },
         selectUp: function() {
             this.now--;
+            //同上
             if (this.now == -1) {
                 this.now = this.myData.length - 1;
             }
             this.keyword = this.myData[this.now];
         },
         search: function() {
+            //打开对应的搜索界面
             window.open(this.logoData[this.searchIndex].searchSrc + this.keyword);
         },
         selectHover: function(index) {

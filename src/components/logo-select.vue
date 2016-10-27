@@ -1,4 +1,5 @@
 <template>
+<!-- 选择logo组件 -->
     <div class="main-logo">
         <!-- v-cloak 表示刷新页面是让vue组件隐藏，而不显示一闪而过的{{代码}}-->
         <img :src="logoData[selectedNow].imgSrc" v-cloak>
