@@ -21,9 +21,9 @@ html {
 }
 
 body {
- 
+
   height: 100%;
-  background:url('../static/images/background.png') no-repeat;background-size: 100% 100%
+  background:url('./assets/background.png') no-repeat;background-size: 100% 100%
 }
 
 #app {
