@@ -1,16 +1,13 @@
 <template>
 <!-- 选择logo组件 -->
     <div class="main-logo">
-        <!-- v-cloak 表示刷新页面是让vue组件隐藏，而不显示一闪而过的{{代码}}-->
-        <img :src="logoData[selectedNow].imgSrc" v-cloak>
-        <!-- @是v-on的缩写，v-on是绑定事件的指令 -->
+        <img :src="logoData[selectedNow].imgSrc">
         <span class="logoList-arrow" @click="toggleFlag"></span>
-        <!-- tranition是vue过渡,本案例是vue2.0的过渡写法 -->
-        <transition name="logofade" v-cloak>
+        <!-- tranition是vue的过渡效果 -->
+        <transition name="logofade">
             <ul v-show="logoListFlag" class="logoList">
-                <!-- vue2.0中v-for指令index写在logo后面,vue2.0以前是index写在logo前面,本案例是vue2.0 -->
-                <li v-for="(logo,index) in logoData" class="logoItem" @mouseover="logoListHover(index)" :class="{selectback:index==logoNow}" @click="logoSelected(index)">
-                    <img :src="logo.imgSrc">
+                <li v-for="(item,index) in logoData" class="logoItem" @mouseover="logoListHover(index)" :class="{selectback:index==logoNow}" @click="logoSelected(index)">
+                    <img :src="item.imgSrc">
                 </li>
             </ul>
         </transition>
@@ -23,10 +20,15 @@ export default {
     data: function() {
         return {
             selectedNow: 0,
-            logoNow:-1,
+            logoNow: -1,
             logoListFlag: false,
-            //静态资源放入static文件夹中
-            logoData:[{imgSrc:'../../static/images/360_logo.png'},{imgSrc:'../../static/images/baidu_logo.png'},{imgSrc:'../../static/images/sougou_logo.png'}]
+            logoData: [{
+                imgSrc: require('../assets/360_logo.png')
+            },{
+                imgSrc:require('../assets/baidu_logo.png')
+            },{
+                imgSrc:require('../assets/sougou_logo.png')
+            }]
         }
     },
     methods: {
@@ -34,20 +36,20 @@ export default {
             this.logoListFlag = !this.logoListFlag;
         },
         logoListHover: function(index) {
+
             this.logoNow = index;
         },
         logoSelected: function(index) {
             this.selectedNow = index;
             this.logoListFlag = false;
-            // 触发父组件的自定义事件，向父组件传参数,selectNow是选择了哪个搜索引擎的索引，父组件得到了之后就可以指定搜索时跳转到哪个搜索引擎。父子组件通信可以看vue文档 组件那一章
-            this.$emit('getindex',this.selectedNow);
+            // 触发父组件的自定义事件，向父组件传参数,selectNow是选择了哪个搜索引擎的索引，父组件得到了之后就可以指定搜索时跳转到哪个搜索引擎
+            this.$emit('getindex', this.selectedNow);
         }
     }
 }
 </script>
+
 <style type="text/css">
-/*css中需加[v-bloak]:{display: none;}告诉vue 有v-bloak这个属性的标签暂时隐藏，vue渲染好了之后再显示*/
-[v-bloak]:{display: none;}
 ul{list-style: none;padding: 0;margin: 0}
 .main-logo {
     width: 600px;
@@ -57,7 +59,7 @@ ul{list-style: none;padding: 0;margin: 0}
 
 .main-logo img {
     display: block;
-    margin: 0px auto;
+    margin: 0 auto;
 }
 
 .logoList-arrow {
