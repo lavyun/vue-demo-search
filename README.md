@@ -1,20 +1,16 @@
-# vue-demo之搜索大全
+一个建议的搜索大全页面
+----
 
-### 用到知识:
-* vuejs2.0
-* vue-resource
-* 组件模块化
+#### 所用知识
+- 单文件组件
+- vue-resource(ajax库)
+- vue过渡效果
 
-适合刚上手vue的童鞋。
-
-### 如何运行
+#### 如何运行
 将本项目下载的本地.
-> 1. 安装git
-> 2. 安装nodejs
-> 3. 配置node环境变量(百度一下)
-> 4. 命令行进入本案例目录
-> 5. 输入命令npm install(最好使用cnpm淘宝镜像)
-> 6. 输入命令npm run dev
+> 1. 需要node环境
+> 2. 输入命令npm install(最好使用cnpm淘宝镜像)
+> 3. 输入命令npm run dev
 
 * [演示地址](http://cs003.m2828.com/demo/360Search)
-* [vue.js 2.0中文文档](http://vuefe.cn/)
+
