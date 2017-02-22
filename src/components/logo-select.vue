@@ -36,7 +36,6 @@ export default {
             this.logoListFlag = !this.logoListFlag;
         },
         logoListHover: function(index) {
-
             this.logoNow = index;
         },
         logoSelected: function(index) {

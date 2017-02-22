@@ -2,4 +2,7 @@
 node_modules/
 dist/
 npm-debug.log
+<<<<<<< HEAD
 .idea/
+=======
+>>>>>>> b5b171ad0b78066a2075964a9587065a06f77cb5
