@@ -1,5 +1,7 @@
-一个建议的搜索大全页面
+一个简易的搜索大全页面
 ----
+
+[react版demo](http://github.com/lavyun/react-demo-search)
 
 #### 效果
 
