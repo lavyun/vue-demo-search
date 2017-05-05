@@ -1,11 +1,11 @@
 <template>
 <!-- 选择logo组件 -->
     <div class="main-logo">
-        <img :src="logoData[selectedNow].imgSrc">
+        <img :src="logoData[selectedNow].imgSrc" @click="toggleFlag" >
         <span class="logoList-arrow" @click="toggleFlag"></span>
         <!-- tranition是vue的过渡效果 -->
         <transition name="logofade">
-            <ul v-show="logoListFlag" class="logoList">
+            <ul v-show="logoListFlag&&mouseLeaveFlag" class="logoList" @mouseleave="mouseLeaveList">
                 <li v-for="(item,index) in logoData" class="logoItem" @mouseover="logoListHover(index)" :class="{selectback:index==logoNow}" @click="logoSelected(index)">
                     <img :src="item.imgSrc">
                 </li>
@@ -22,6 +22,7 @@ export default {
             selectedNow: 0,
             logoNow: -1,
             logoListFlag: false,
+            mouseLeaveFlag:false,
             logoData: [{
                 imgSrc: require('../assets/360_logo.png')
             },{
@@ -34,6 +35,7 @@ export default {
     methods: {
         toggleFlag: function() {
             this.logoListFlag = !this.logoListFlag;
+            this.mouseLeaveFlag = true;
         },
         logoListHover: function(index) {
 
@@ -44,7 +46,12 @@ export default {
             this.logoListFlag = false;
             // 触发父组件的自定义事件，向父组件传参数,selectNow是选择了哪个搜索引擎的索引，父组件得到了之后就可以指定搜索时跳转到哪个搜索引擎
             this.$emit('getindex', this.selectedNow);
-        }
+        },
+        mouseLeaveList:function(){
+            //鼠标离开列表事件
+            this.mouseLeaveFlag = false;
+            this.logoListFlag = false;
+        },
     }
 }
 </script>
@@ -60,6 +67,7 @@ ul{list-style: none;padding: 0;margin: 0}
 .main-logo img {
     display: block;
     margin: 0 auto;
+    user-select: none; 
 }
 
 .logoList-arrow {
@@ -86,7 +94,7 @@ ul{list-style: none;padding: 0;margin: 0}
 .logoList li {
     width: 100%;
     height: 80px;
-    background-color: #fefefe;
+    background-color: rgba(255, 255, 255, 0.87); /*Material Design 规范（大概）-- ShirleyM */
     line-height: 80px;
     padding-top: 1px;
 }
@@ -98,7 +106,7 @@ ul{list-style: none;padding: 0;margin: 0}
 
 .logofade-enter-active,
 .logofade-leave-active {
-    transition: all .5s;
+    transition: all  .5s;
 }
 
 .logofade-enter,
