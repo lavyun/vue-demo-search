@@ -67,7 +67,8 @@ ul{list-style: none;padding: 0;margin: 0}
 .main-logo img {
     display: block;
     margin: 0 auto;
-    user-select: none; 
+    user-select: none;
+    cursor: pointer;
 }
 
 .logoList-arrow {
@@ -94,7 +95,7 @@ ul{list-style: none;padding: 0;margin: 0}
 .logoList li {
     width: 100%;
     height: 80px;
-    background-color: rgba(255, 255, 255, 0.87); /*Material Design 规范（大概）-- ShirleyM */
+    background-color: #FEFEFE
     line-height: 80px;
     padding-top: 1px;
 }
