@@ -95,7 +95,7 @@ ul{list-style: none;padding: 0;margin: 0}
 .logoList li {
     width: 100%;
     height: 80px;
-    background-color: #FEFEFE
+    background-color: #FEFEFE; /*少个封号报错*/
     line-height: 80px;
     padding-top: 1px;
 }
