@@ -3,9 +3,7 @@
 
 [react版demo](http://github.com/lavyun/react-demo-search)
 
-#### 效果
-
-![](http://p1.bqimg.com/567571/19f24b1743c6bf90.png)
+* [演示地址](http://lavyun.github.io/vue-demo-search)
 
 #### 所用知识
 - 单文件组件
@@ -17,6 +15,3 @@
 > 1. 需要node环境
 > 2. 输入命令npm install(最好使用cnpm淘宝镜像)
 > 3. 输入命令npm run dev
-
-* [演示地址](http://cs003.m2828.com/demo/360Search)
-
